@@ -7,11 +7,13 @@ import { handleAddQuestion } from "../actions/questions";
 import { ListView } from "react-uwp/ListView";
 
 const NewQS = ({ authedUser, dispatch }) => {
+  // used arrow Fn to handle the oncChange event using useState Hook
+  // the half of page is used to render the Question while typing.
+
   const [pollOne, setPollOne] = useState("");
   const [pollTwo, setPollTwo] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(pollTwo, pollOne, authedUser);
     dispatch(handleAddQuestion(pollOne, pollTwo, authedUser));
     setPollOne("");
     setPollTwo("");
@@ -74,14 +76,15 @@ const NewQS = ({ authedUser, dispatch }) => {
             border: "none",
             margin: 0,
             maxWidth: 700,
+            width: "fit-content",
             minWidth: 250,
             marginTop: -10,
             marginBottom: -10,
           }}
           listSource={[
-            <div className="col-md-5">
+            <div className="col-md-5" style={{ width: "100%" }}>
               <Separator />
-              <p className="fs-3">Would You Rather </p>
+              <p className="fs-2">Would You Rather 🤷‍♂️? </p>
               <Button className="fs-4">{pollOne} </Button>
               {pollTwo.length > 0 && (
                 <>

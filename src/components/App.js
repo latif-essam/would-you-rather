@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import { Theme, getTheme } from "react-uwp/Theme";
 
 // import LoadingBar from "react-redux-loading";
-import Nav from "./Nav/Nav";
+import Nav from "./Nav";
 import Login from "./Login";
 
 import { handleInitialData } from "../actions/shared";
@@ -22,14 +22,12 @@ class App extends Component {
     this.props.dispatch(handleInitialData());
   }
   images = {
-    1: "https://images7.alphacoders.com/411/thumbbig-411820.jpg",
-    2: "https://images.alphacoders.com/899/thumb-1920-899574.jpg",
-    3: "https://images4.alphacoders.com/378/thumbbig-37864.jpg",
-    4: "https://images2.alphacoders.com/521/thumbbig-521718.jpg",
-    5: "https://images5.alphacoders.com/462/thumbbig-462370.jpg",
-    6: "https://pixabay.com/get/57e9d042494fad00f5d89960c62e367d1d3bdbe45550_1920.jpg",
+    1: "https://images.unsplash.com/photo-1612703232530-98a2fb351e9b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    2: "https://pixabay.com/get/57e9d042494fad00f5d89960c62e367d1d3bdbe45550_1920.jpg",
+    3: "https://images.unsplash.com/photo-1606055854326-12a2fdcac6c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   };
   render() {
+    // checking if the all data is loaded and user has loged in
     const { readyState, authedState } = this.props;
     return (
       <Fragment>
@@ -38,13 +36,18 @@ class App extends Component {
             themeName: "dark",
             accent: "#0078D7",
             useFluentDesign: true,
+            desktopBackgroundImage: this.images[3],
           })}
         >
-          <div className="container">
-            {readyState && <Nav />}
+          <header>
             {readyState && authedState && (
-              <Separator style={{ marginBottom: 25 }} />
+              <>
+                <Nav />
+                <Separator />
+              </>
             )}
+          </header>
+          <main className="container">
             {readyState && authedState && (
               <Switch>
                 <Route path="/" exact component={Questions} />
@@ -59,7 +62,7 @@ class App extends Component {
               </Switch>
             )}
             {readyState && !authedState && <Login />}
-          </div>
+          </main>
         </Theme>
       </Fragment>
     );

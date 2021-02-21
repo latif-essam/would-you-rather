@@ -1,37 +1,20 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import { connect } from "react-redux";
+import Button from "react-uwp/Button";
+import UserView from "./UserView";
 
-class User extends Component {
-  render() {
-    const { user, handleLogin } = this.props;
-    const { name, avatarURL } = user;
-    return (
-      <div className="card">
-        <img
-          src={avatarURL}
-          className="card-img-top"
-          alt={`Avatar of ${name}`}
-        />
-        <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          {handleLogin && (
-            <Fragment>
-              <hr />
-              <button className="btn btn-primary" onClick={this.handleClick}>
-                Login
-              </button>
-            </Fragment>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  handleClick = (e) => {
-    const { id, handleLogin } = this.props;
-    handleLogin(id);
-  };
-}
+const User = ({ user, id, handleLogin }) => {
+  return (
+    <div className="shadow text-center">
+      <UserView viewType="login" user={user} key={user.id} />
+      {handleLogin && (
+        <Button className="mb-2" onClick={() => handleLogin(id)}>
+          Login
+        </Button>
+      )}
+    </div>
+  );
+};
 
 function mapStateToProps({ users }, { id }) {
   const user = users[id];

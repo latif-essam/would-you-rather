@@ -1,5 +1,5 @@
 import React from "react";
-const Alert = ({ type = "danger" }) => {
+const Alert = ({ type = "danger", children }) => {
   const cases = {
     danger: {
       title: "Error",
@@ -16,12 +16,20 @@ const Alert = ({ type = "danger" }) => {
       text: "There is no Questions to show, Try to answer some Question! ✌",
       alert: "info",
     },
+    main: {
+      alert: "info",
+    },
   };
   const currentAlert = cases[type];
   return (
     <div className={`alert alert-${currentAlert.alert}`} role="alert">
-      <p className="fs-4">{currentAlert.title}</p>
-      <p className="fs-5">{currentAlert.text}</p>
+      {currentAlert !== "main" && (
+        <>
+          <p className="fs-4">{currentAlert.title}</p>
+          <p className="fs-5">{currentAlert.text}</p>
+        </>
+      )}
+      {children}
     </div>
   );
 };

@@ -6,8 +6,10 @@ import QS from "./QS";
 import Alert from "./Alert";
 
 const Questions = ({ AnsweredQS, unAnsweredQS }) => {
-  const [currentTab, setCurrentTab] = useState("QS");
+  // managing the taps active state.
 
+  const [currentTab, setCurrentTab] = useState("QS");
+  // sorting the Qs to render desc by time recent => old
   const sortedAnsweredQS = Object.values(AnsweredQS)
     .sort((a, b) => b.timestamp - a.timestamp)
     .map((q) => q);

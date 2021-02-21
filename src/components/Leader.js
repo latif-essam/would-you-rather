@@ -7,9 +7,8 @@ import ListView from "react-uwp/ListView";
 const Leader = ({ user, isMe }) => {
   const { answers, questions } = user;
   const answered = Object.keys(answers).length;
-  console.log(answered);
   const asked = questions.length;
-  const sum = answered + asked;
+  const total = answered + asked;
 
   return (
     <ListView
@@ -25,7 +24,7 @@ const Leader = ({ user, isMe }) => {
       listSource={[
         <>
           <UserView user={user} key={user.id} me={isMe} viewType={"board"} />
-          <Score total={sum} asked={asked} answered={answered} />
+          <Score total={total} asked={asked} answered={answered} />
         </>,
       ]}
     />

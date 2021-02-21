@@ -1,81 +1,56 @@
 import React from "react";
 import { connect } from "react-redux";
+import Tabs, { Tab } from "react-uwp/Tabs";
+import Icon from "react-uwp/Icon";
+
 import User from "./User";
 import { setAuthedUser } from "./../actions/authedUser";
+import ListView from "react-uwp/ListView";
+import Alert from "./Alert";
+import Footer from "./Footer";
+import { Separator } from "react-uwp";
 const Login = ({ usersIds, dispatch }) => {
   const handleLogin = (userId) => {
     dispatch(setAuthedUser(userId));
   };
   return (
-    <div className="conatiner">
-      <div className="row">
-        <h2>
-          Select how you want to use the app, from the next logging methods
-        </h2>
-        <div className="col-12">
-          <div className="row">
-            <div className="col-3">
-              <div className="list-group" id="list-tab" role="tablist">
-                <a
-                  className="list-group-item list-group-item-action active"
-                  id="list-home-list"
-                  data-bs-toggle="list"
-                  href="#list-home"
-                  role="tab"
-                  aria-controls="home"
+    <>
+      <ListView
+        className="mx-auto "
+        style={{
+          width: "fit-content",
+          margin: "0 auto",
+        }}
+        listItemStyle={{
+          display: "grid",
+          border: "none",
+          marginBottom: -10,
+          marginTop: -10,
+          paddingBottom: 10,
+          paddingTop: 10,
+        }}
+        listSource={[
+          <div className="conatiner-fluid ">
+            <div className="row">
+              <div className="col ms-4 mx-4">
+                <Tabs
+                  style={{ display: "block", margin: "10px 0" }}
+                  renderTitle={(title) => (
+                    <span>
+                      <Icon>{title}</Icon>
+                      <span style={{ marginLeft: 12 }}>{title}</span>
+                    </span>
+                  )}
                 >
-                  Sign with default User
-                </a>
-                <a
-                  className="list-group-item list-group-item-action"
-                  id="list-profile-list"
-                  data-bs-toggle="list"
-                  href="#list-profile"
-                  role="tab"
-                  aria-controls="profile"
-                >
-                  Sign In
-                </a>
-                <a
-                  className="list-group-item list-group-item-action"
-                  id="list-messages-list"
-                  data-bs-toggle="list"
-                  href="#list-messages"
-                  role="tab"
-                  aria-controls="messages"
-                >
-                  Create new account
-                </a>
-                <a
-                  className="list-group-item list-group-item-action"
-                  id="list-settings-list"
-                  data-bs-toggle="list"
-                  href="#list-settings"
-                  role="tab"
-                  aria-controls="settings"
-                >
-                  info
-                </a>
-              </div>
-            </div>
-            <div className="col-9 text-dark">
-              <div className="tab-content" id="nav-tabContent">
-                <div
-                  className="tab-pane fade show active"
-                  id="list-home"
-                  role="tabpanel"
-                  aria-labelledby="list-home-list"
-                >
-                  <div className="card pb-2 pl-2 pr-2 pt-2">
-                    <h3 className="card-header">Login</h3>
+                  <Tab title="SwitchUser">
                     <div className="card-body">
                       <h4>
                         In order to use this application you must be
                         authenticated.
                       </h4>
-                      <p>Please pick up a user to login</p>
+                      <p className="fs-4">Please pick up a user to login</p>
                     </div>
-                    <div className="card-group">
+                    <div className="card-group text-center">
                       {usersIds.map((id) => (
                         <User
                           id={id}
@@ -84,38 +59,21 @@ const Login = ({ usersIds, dispatch }) => {
                         />
                       ))}
                     </div>
-                  </div>
-                </div>
-                <div
-                  className="tab-pane fade"
-                  id="list-profile"
-                  role="tabpanel"
-                  aria-labelledby="list-profile-list"
-                >
-                  ...
-                </div>
-                <div
-                  className="tab-pane fade"
-                  id="list-messages"
-                  role="tabpanel"
-                  aria-labelledby="list-messages-list"
-                >
-                  ...
-                </div>
-                <div
-                  className="tab-pane fade"
-                  id="list-settings"
-                  role="tabpanel"
-                  aria-labelledby="list-settings-list"
-                >
-                  ...
-                </div>
+                  </Tab>
+                  <Tab title="Accounts" className={"my-4 p-2"}>
+                    <Alert type={"main"}>
+                      Soon you will be able to create your own accounts.
+                    </Alert>
+                  </Tab>
+                </Tabs>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </div>,
+        ]}
+      />
+      <Separator className="mt-5 my-5" />
+      <Footer />
+    </>
   );
 };
 

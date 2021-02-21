@@ -9,7 +9,7 @@ const Leaderboard = ({ usersIDS }) => {
         {usersIDS.map((id) => (
           <li key={id}>
             <Leader id={id} />
-            <Separator />
+            <Separator className="my-2" />
           </li>
         ))}
       </ol>
