@@ -1,40 +1,23 @@
 import React from "react";
-import Icon from "react-uwp/Icon";
-import { Separator } from "react-uwp/Separator";
 
-const Score = ({ qs, ans, total }) => {
+const Score = ({ asked, answered, total }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-      }}
-    >
-      {total > 0 && (
-        <p className="badge bg-info fs-5 mx-auto">Score : {total}</p>
-      )}
-      <Separator />
-      <div
-        className="my-3"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "flex-start",
-        }}
-      >
-        {qs > 0 && (
-          <span style={{ fontSize: 15 }} className="badge bg-danger  me-1 p-2">
-            QS Asked : {qs}
-          </span>
-        )}
-        {ans > 0 && (
-          <span style={{ fontSize: 15 }} className="badge bg-dark p-2">
-            QS Answered : {ans}
-          </span>
-        )}
-      </div>
-    </div>
+    <table className="table text-light table-bordered border-info mt-4 fs-6 text-center">
+      <thead>
+        <tr>
+          <th>Total Score</th>
+          <th>Questions Asked</th>
+          <th>Questions Answered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{total}</td>
+          <td>{asked}</td>
+          <td>{answered}</td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 

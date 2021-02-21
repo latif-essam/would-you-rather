@@ -27,6 +27,7 @@ class App extends Component {
     3: "https://images4.alphacoders.com/378/thumbbig-37864.jpg",
     4: "https://images2.alphacoders.com/521/thumbbig-521718.jpg",
     5: "https://images5.alphacoders.com/462/thumbbig-462370.jpg",
+    6: "https://pixabay.com/get/57e9d042494fad00f5d89960c62e367d1d3bdbe45550_1920.jpg",
   };
   render() {
     const { readyState, authedState } = this.props;
@@ -37,10 +38,8 @@ class App extends Component {
             themeName: "dark",
             accent: "#0078D7",
             useFluentDesign: true,
-            desktopBackgroundImage: this.images[2],
           })}
         >
-          {/* <LoadingBar /> */}
           <div className="container">
             {readyState && <Nav />}
             {readyState && authedState && (

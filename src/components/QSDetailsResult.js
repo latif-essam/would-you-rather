@@ -1,13 +1,11 @@
 import React from "react";
-import ListView from "react-uwp/ListView";
 import Separator from "react-uwp/Separator";
 import Button from "react-uwp/Button";
 import Icon from "react-uwp/Icon";
 
-import { Link, NavLink } from "react-router-dom";
-import { formatDate } from "./../utils/helpers";
+import { NavLink } from "react-router-dom";
 
-const QSDetailsResult = ({ question: q, vote, user }) => {
+const QSDetailsResult = ({ question: q, vote }) => {
   const votesAnswer1 = q.optionOne.votes.length;
   const votesAnswer2 = q.optionTwo.votes.length;
   const allAnswers = votesAnswer1 + votesAnswer2;

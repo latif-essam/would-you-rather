@@ -129,8 +129,8 @@ function mapStateToProps({ authedUser, questions }) {
       question.optionTwo.votes.includes(authedUser)
   );
   return {
-    unAnsweredQS, //: Object.values(questionsUnAnswered).sort((a, b) => b.timestamp - a.timestamp).map((q) => q.id),
-    AnsweredQS, //: Object.values(questionsAnswered).sort((a, b) => b.timestamp - a.timestamp).map((q) => q.id)
+    unAnsweredQS,
+    AnsweredQS,
   };
 }
 

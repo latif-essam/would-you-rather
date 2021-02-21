@@ -7,8 +7,8 @@ const Leaderboard = ({ usersIDS }) => {
     <div>
       <ol style={{ fontSize: 40 }}>
         {usersIDS.map((id) => (
-          <li>
-            <Leader id={id} key={id} />
+          <li key={id}>
+            <Leader id={id} />
             <Separator />
           </li>
         ))}

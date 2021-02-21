@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import UserView from "./UserView";
 import Score from "./Score";
+import ListView from "react-uwp/ListView";
+
 const Leader = ({ user, isMe }) => {
   const { answers, questions } = user;
   const answered = Object.keys(answers).length;
@@ -10,22 +12,23 @@ const Leader = ({ user, isMe }) => {
   const sum = answered + asked;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        marginTop: 15,
+    <ListView
+      listItemStyle={{
+        display: "grid",
+        border: "none",
+        maxWidth: 1000,
+        width: window.innerWidth - 100,
+        minWidth: 250,
+        padding: 10,
+        margin: -9,
       }}
-    >
-      <UserView
-        user={user}
-        key={user.id}
-        me={isMe}
-        imageSize={110}
-        nameSize={4}
-      />
-      <Score qs={asked} ans={answered} total={sum} />
-    </div>
+      listSource={[
+        <>
+          <UserView user={user} key={user.id} me={isMe} viewType={"board"} />
+          <Score total={sum} asked={asked} answered={answered} />
+        </>,
+      ]}
+    />
   );
 };
 

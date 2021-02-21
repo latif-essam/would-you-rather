@@ -13,8 +13,8 @@ export function getInitialData() {
     })
   );
 }
-export function saveQuestionAnswer(answer) {
-  return _saveQuestionAnswer(answer);
+export function saveQuestionAnswer(info) {
+  return _saveQuestionAnswer(info);
 }
 export function saveQuestion(question) {
   return _saveQuestion(question);

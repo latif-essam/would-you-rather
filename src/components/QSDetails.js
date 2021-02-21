@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
-import Button from "react-uwp/Button";
 import ListView from "react-uwp/ListView";
 import { connect } from "react-redux";
-import { saveQuestionAnswer } from "../utils/API";
 import Separator from "react-uwp/Separator";
-import { handleSetQuestionAnswer } from "../actions/questions";
 import QSDetailsVote from "./QSDetailsVote";
 import QSDetailsResult from "./QSDetailsResult";
 import UserView from "./UserView";
+import { handleSetQuestionAnswer } from "../actions/questions";
 
 const QSDetails = ({
   authedUser,
@@ -19,9 +16,9 @@ const QSDetails = ({
   user,
   dispatch,
 }) => {
-  // const saveQuestionAnswer = (answer) => {
-  //   dispatch(handleSetQuestionAnswer(authedUser, id, answer));
-  // };
+  const saveQsAns = (answer) => {
+    dispatch(handleSetQuestionAnswer(authedUser, id, answer));
+  };
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -43,15 +40,9 @@ const QSDetails = ({
           <Separator />
           <div className="row">
             {isAnswered ? (
-              <QSDetailsResult question={q} user={user} vote={vote} />
+              <QSDetailsResult question={q} vote={vote} />
             ) : (
-              <QSDetailsVote
-                question={q}
-                user={user}
-                dispatch={dispatch}
-                authedUser={authedUser}
-                id={id}
-              />
+              <QSDetailsVote question={q} saveQsAns={saveQsAns} />
             )}
           </div>
         </div>,

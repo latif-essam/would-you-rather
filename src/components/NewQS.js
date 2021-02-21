@@ -4,13 +4,11 @@ import { Separator } from "react-uwp";
 import Button from "react-uwp/Button";
 import TextBox from "react-uwp/TextBox";
 import { handleAddQuestion } from "../actions/questions";
-import QSView from "./QSView";
 import { ListView } from "react-uwp/ListView";
 
 const NewQS = ({ authedUser, dispatch }) => {
   const [pollOne, setPollOne] = useState("");
   const [pollTwo, setPollTwo] = useState("");
-  const q = {};
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(pollTwo, pollOne, authedUser);

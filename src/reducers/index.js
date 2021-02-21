@@ -10,5 +10,5 @@ export default combineReducers({
   authedUser,
   users,
   questions,
-  Bar: loadingBarReducer,
+  loading: loadingBarReducer,
 });

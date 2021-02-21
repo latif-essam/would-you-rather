@@ -1,14 +1,12 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import Button from "react-uwp/Button";
+import { withRouter } from "react-router-dom";
 import ListView from "react-uwp/ListView";
-import { formatDate } from "./../utils/helpers";
 import { connect } from "react-redux";
 import Separator from "react-uwp/Separator";
 import QSView from "./QSView";
 import UserView from "./UserView";
 
-const QS = ({ question: q, user, id }) => {
+const QS = ({ question: q, user, id, authedUser }) => {
   return (
     <ListView
       listItemStyle={{
@@ -23,16 +21,26 @@ const QS = ({ question: q, user, id }) => {
       }}
       listSource={[
         <div className="container">
-          <UserView user={user} timestamp={q.timestamp} />
-          <Separator direction="row" className="mb-2" />
-          <QSView q={q} id={id} />
+          <div className="row">
+            <UserView
+              nameSize={4}
+              user={user}
+              imageSize={80}
+              timestamp={q.timestamp}
+              me={authedUser}
+            />
+            <Separator direction="row" className="mb-2" />
+          </div>
+          <div className="row">
+            <QSView q={q} id={id} />
+          </div>
         </div>,
       ]}
     />
   );
 };
 
-function mapStateToProps({ users, questions }, { id }) {
+function mapStateToProps({ users, questions }, { id, authedUser }) {
   const question = questions[id];
   return {
     user: users[question.author],

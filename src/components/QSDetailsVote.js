@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
 import Button from "react-uwp/Button";
-import { handleSetQuestionAnswer } from "../actions/questions";
 
-const QSDetailsVote = ({ question: q, id, authedUser, dispatch }) => {
+const QSDetailsVote = ({ question: q, saveQsAns }) => {
   const [currentVote, setCurrentVote] = useState("");
 
   const handleChange = (e) => {
@@ -12,7 +11,7 @@ const QSDetailsVote = ({ question: q, id, authedUser, dispatch }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(handleSetQuestionAnswer(authedUser, id, currentVote));
+    saveQsAns(currentVote);
   };
 
   return (

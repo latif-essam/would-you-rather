@@ -19,21 +19,7 @@ export function setUserQuestion(question) {
 
 export function setUserAnswer(answer) {
   return {
-    type: RECEIVE_USERS,
+    type: SET_USER_ANSWER,
     answer,
   };
 }
-
-// export const handleAddUser = (user) => {
-//   return (dispatch) => {
-//     dispatch(addUser(user));
-//     return;
-//   };
-// };
-
-// function addUser(user) {
-//   return {
-//     type: ADD_USER,
-//     user,
-//   };
-// }
