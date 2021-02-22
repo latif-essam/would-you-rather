@@ -6,6 +6,14 @@
 4. [bootsrap](https://getbootstrap.com/)
 5. [React Navigation](https://reactrouter.com/web/guides/quick-start)
 
+## Screenshots from the App.
+### Modern, Responsive Design between Mobile and Desktop with Zero-lag Performance
+
+| Desktop | Mobile |
+|--- |---|
+|![WYR App Desktop](https://github.com/latif-essam/would-you-rather/blob/main/public/shots/desk1.png)|![WYR App Mobile](https://github.com/latif-essam/would-you-rather/blob/main/public/shots/mobile1.png)|
+
+
 ### the app was initialized with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
